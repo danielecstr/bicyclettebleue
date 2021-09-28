@@ -1,0 +1,29 @@
+{% extends 'template_base.html' %}
+
+{% block contenu %}
+    <br>
+    <h1 class="detailLocation"> Les détails de la location :</h1>
+    <br>
+    <div class="detailLocation">
+        <p>Le statut de la location numéro {{ locationvelo.lv_loc_id.loc_id }} est :  <b>{{ locationvelo.lv_loc_id.loc_statut }}</b></p>
+
+        <p>La location à commencé le <b>{{ locationvelo.date_debut }}</b> et prends fin le <b>{{ locationvelo.date_fin }}</b></p>
+
+
+        <p><u>Le client concerné par cette location est :</u><br>
+        Nom : {{ locationvelo.lv_loc_id.loc_client.cli_nom }} <br>
+        Prenom : {{ locationvelo.lv_loc_id.loc_client.cli_prenom }} <br>
+        Adresse : {{ locationvelo.lv_loc_id.loc_client.cli_adresseposte }} <br>
+        Mail : {{ locationvelo.lv_loc_id.loc_client.cli_mail }} <br>
+        Telephone : {{ locationvelo.lv_loc_id.loc_client.cli_tel }} </p>
+
+        <p><u>Le vélo concerné par cette location est :</u><br>
+        Nom : {{ locationvelo.lv_vel_id.vel_nom }} <br>
+        Numéro du cadre : {{ locationvelo.lv_vel_id.vel_num_cadre }}<br>
+        Marque: {{ locationvelo.lv_vel_id.vel_marque}} <br>
+        Couleur : {{ locationvelo.lv_vel_id.vel_couleur }} <br>
+        Type : {{ locationvelo.lv_vel_id.vel_type }} <br>
+        Remarque : {{ messageDescriptionVelo }}</p>
+        <a href="{% url 'location:index' %}"> <--- Retour aux locations </a>
+    </div>
+{% endblock contenu %}

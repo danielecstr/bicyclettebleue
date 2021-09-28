@@ -1,0 +1,47 @@
+{% extends 'template_base.html' %}
+{% load static %}
+
+{% block contenu %}
+    <br>
+<h1 style="margin-left: 10%">Liste des locations</h1>
+    <br>
+<h3 style="margin-left: 10%">Il y a {{ messageNbLocation }}</h3>
+<br>
+ <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Numéro location</th>
+      <th scope="col">Statut location</th>
+      <th scope="col">Nom client</th>
+      <th scope="col">Nom vélo</th>
+      <th scope="col">Date début</th>
+      <th scope="col">Date fin</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for locationvelo in locationvelo %}
+    <tr>
+      <th scope="row">{{ locationvelo.lv_loc_id.loc_id}}</th>
+      <td><a href="{% url 'location:detailsLocation' locationvelo.id %}">{{ locationvelo.lv_loc_id.loc_statut}}</a></td>
+      <td><a>{{locationvelo.lv_loc_id.loc_client.cli_nom}} {{locationvelo.lv_loc_id.loc_client.cli_prenom}}</a></td>
+      <td>{{locationvelo.lv_vel_id.vel_nom}}</td>
+      <td>{{locationvelo.date_debut}}</td>
+      <td>{{locationvelo.date_fin}}</td>
+      <td><a href="{% url 'location:modifierLocation'  locationvelo.id%}">Modifier</a></td>
+      <td><a href="{% url 'location:supprimerLocation' locationvelo.id%}"><img class="imagePoubelle" src="{% static 'img/poubelle.png' %}" alt="Image"></a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+<br>
+
+<!-- Button -->
+<a href="{% url 'location:nouvelleLocation' %}" class="btn btn-primary" role="button" aria-pressed="true" style="margin-left: 10%">Ajouter une nouvelle location</a>
+
+<br>
+
+
+{% endblock %}

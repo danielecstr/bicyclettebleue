@@ -1,0 +1,14 @@
+{% extends 'template_base.html' %}
+
+{% block contenu %}
+<h4 style="margin-left: 22%">Voulez-vous supprimer ce client ?</h4>
+<br>
+
+<form action="{% url 'client:supprimerClient' item.cli_id %}" style="margin-left: 12%" method="post">
+    {% csrf_token %}
+
+    <a class="btn btn-warning" href="{% url 'client:index'%}" style="margin-left: 12%">Annuler</a>
+    <input class="btn btn-danger" type="submit" name="Confirmer" >
+</form>
+
+{% endblock %}
