@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="J:\Application de base\venv"
+VIRTUAL_ENV="J:\Site Structure\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
